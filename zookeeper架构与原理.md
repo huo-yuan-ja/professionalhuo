@@ -4,10 +4,10 @@ Zookeeper 分布式服务框架是Apache Hadoop 的一个子项目，它主要�
  * 状态同步服务
  * 集群管理
  * 分布式应用配置项的管理等
-* Zookeeper已经成为Hadoop生态系统中的基础组件。
+ * Zookeeper已经成为Hadoop生态系统中的基础组件。
 
 ## Zookeeper的基本原理和架构  
-### 1.Zookeeper的角色
+### Zookeeper的角色
 
 * 领导者（leader）：负责进行投票的发起和决议，更新系统状态。
 
