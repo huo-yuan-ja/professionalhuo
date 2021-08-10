@@ -56,4 +56,7 @@ FOLLOWING：leader已经选举出来，当前Server与之同步
 
 » 实时性，在一定事件范围内，client能读到最新数据
 
-### Zookeeper节点数据操作流程
+### Zookeeper节点数据操作流程  
+![数据操作流程](https://github.com/huo-yuan-ja/jin_picture/blob/main/%E4%BC%A0%E8%BE%93.jpeg)  
+
+
