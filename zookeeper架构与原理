@@ -17,3 +17,4 @@ Zookeeper的基本原理和架构
 » Observer：可以接受客户端连接，将写请求转发给leader，但observer不参加投票过程，只同步leader的状态，observer的目的是为了扩展系统，提高读取速度
 
 » 客户端（client）：请求发起方
+![zookeeper集群架构](https://github.com/huo-yuan-ja/jin_picture/commit/a373e72b18006d41115aff1480b37049b8fc86b0)
