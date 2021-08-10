@@ -1,11 +1,10 @@
 # 什么是 Zookeeper
-Zookeeper 分布式服务框架是Apache Hadoop 的一个子项目，它主要是用来解决分布式应用中经常遇到的一些数据管理问题，如：
-
- 统一命名服务
- 状态同步服务
- 集群管理
- 分布式应用配置项的管理等
-Zookeeper已经成为Hadoop生态系统中的基础组件。
+Zookeeper 分布式服务框架是Apache Hadoop 的一个子项目，它主要是用来解决分布式应用中经常遇到的一些数据管理问题，如：  
+ * 统一命名服务
+ * 状态同步服务
+ * 集群管理
+ * 分布式应用配置项的管理等
+* Zookeeper已经成为Hadoop生态系统中的基础组件。
 
 Zookeeper的基本原理和架构
 1、Zookeeper的角色
