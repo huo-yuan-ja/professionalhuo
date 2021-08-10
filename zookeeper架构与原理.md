@@ -16,5 +16,6 @@ Zookeeper 分布式服务框架是Apache Hadoop 的一个子项目，它主要�
 * Observer：可以接受客户端连接，将写请求转发给leader，但observer不参加投票过程，只同步leader的状态，observer的目的是为了扩展系统，提高读取速度
 
 * 客户端（client）：请求发起方  
-![zookeeper集群架构](https://github.com/huo-yuan-ja/jin_picture/blob/main/2084.jpeg)
+![zookeeper集群架构](https://github.com/huo-yuan-ja/jin_picture/blob/main/2084.jpeg)  
+![角色描述](https://github.com/huo-yuan-ja/jin_picture/blob/main/%E8%A7%92%E8%89%B2%E6%8F%8F%E8%BF%B0.jpeg)  
 
