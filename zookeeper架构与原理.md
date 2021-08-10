@@ -17,3 +17,4 @@ Zookeeper 分布式服务框架是Apache Hadoop 的一个子项目，它主要�
 
 * 客户端（client）：请求发起方  
 ![zookeeper集群架构](https://github.com/huo-yuan-ja/jin_picture/blob/main/2084.jpeg)
+
