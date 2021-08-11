@@ -18,4 +18,5 @@ Namenode：该进程运行在master节点上。Namenode节点存储元数据，�
 Datanode：该进程运行在Slave节点，这些节点是真正对数据进行处理和存储的节点。
 
 # HDFS 的数据存储
-把文件写入到HDFS的时候，HDFS会把文件分割成很多分片，也就是块（block）。默认情况下，HDFS块大小为128MB，块大小可以按需要修改。文件分割成块之后，HDFS会把他们以分布式方式存储在集群的不多节点上。这为MapReduce在集群并行化处理数据提供了很好的基础。
+把文件写入到HDFS的时候，HDFS会把文件分割成很多分片，也就是块（block）。默认情况下，HDFS块大小为128MB，块大小可以按需要修改。文件分割成块之后，HDFS会把他们以分布式方式存储在集群的不多节点上。这为MapReduce在集群并行化处理数据提供了很好的基础。  
+![hdfs工作原理](https://github.com/huo-yuan-ja/jin_picture/blob/main/hdfs1.png)
