@@ -86,6 +86,7 @@ no_restart 不重启
 ### 修改配置文件
 修改三个节点的elasticsearch.yml,kill掉es进程（重启es集群），需要注意的是所有es节点都要重启。  
 ### 修改集群配置
+通过api修改
 ```
 curl -X PUT localhost:9200 /_cluster/settings -d
 {
@@ -97,3 +98,4 @@ curl -X PUT localhost:9200 /_cluster/settings -d
   }
 }
 ```
+
