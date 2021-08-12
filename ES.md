@@ -100,28 +100,30 @@ curl -X PUT localhost:9200 /_cluster/settings -d
 ```
 ### 修改索引配置
 配置单个索引的方法：
+```
 curl -X PUT ip:port/index_name/_settings -d '{
 #例子
 "number_of_replicas":2 #修改副本数量
 }'
-
+```
 配置所有索引的方法：
+```
 curl -X PUT ip:port/_all/_settings -d '{
 #例子
 "number_of_replicas":2 #修改副本数量
 }'
-
+```
 es监控工具cerebro(开源)
 nohup ./cerebro -D http.port=9001 &  
 
 ### es日常巡检
-1.查看集群状态
-`curl -XGET http://localhost:9200/_cluster/health?pretty`  
-2.查看集群JVM内存大小，如果超过80%，则集群写入会不正常
-`curl -XGET "http://localhost:9200/_nodes/stats/jvm?pretty"|grep heap_used_percent`  
+1.查看集群状态  
+`curl -XGET http://localhost:9200/_cluster/health?pretty`    
+2.查看集群JVM内存大小，如果超过80%，则集群写入会不正常  
+`curl -XGET "http://localhost:9200/_nodes/stats/jvm?pretty"|grep heap_used_percent`    
 
-3.集群空间检查
-`curl http://localhost:9200/_cat/allocation?v`
+3.集群空间检查  
+`curl http://localhost:9200/_cat/allocation?v`  
 
-4.检查磁盘空间
-df -h
+4.检查磁盘空间  
+df -h  
