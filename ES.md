@@ -39,4 +39,6 @@ curl localhost:5100/search/clusters|python -m json.tool
 集群健康状态  
 curl -XGET http://localhost:9200/_cluster/health?pretty  
 green yello red  
+集群node整体信息  
+curl -XGET localhost:9200/_cat/nodes?v  
 
