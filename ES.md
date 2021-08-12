@@ -138,7 +138,8 @@ es集群出现Unassigned shards问题
 `curl -XGET localhost:9200/_cluseter/allocation/explain?pretty`  
 5.查看状态不为green的index  
 `curl -XGET localhost:9200/_cat/indices?v|grep -v green`  
-出现问题情况 
+
+出现问题情况   
 1.node节点卡死，通过kill es进程重启卡死es节点即可  
 2.shards 分配超过最大次数，尝试手动分配shard    
 `curl -XPOST 'localhost:9203/_cluster/reroute?retry_failed=true'`
