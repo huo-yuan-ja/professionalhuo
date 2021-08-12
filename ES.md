@@ -60,4 +60,14 @@ curl -XGET  localhost:9200/_cluster/allocation/expain?pretty
 curl localhost:9200/_cat/snapshots/{repository}   
 查看备份  
 es首次备份全量备份，之后是增量备份   
-
+es 集群重启  
+通过接口来重起    
+curl -XPOST localhost:5100/cluster/update -d '{
+"cluster_name":"XXXXX",
+"operator":"XXXXX",
+"restart_type":"XXXX"
+}'  
+重启策略  
+rolling_restart 滚动重启（建议）  
+full_cluster_restart 全量重启  
+no_restart 不重启  
