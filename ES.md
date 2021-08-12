@@ -127,3 +127,28 @@ nohup ./cerebro -D http.port=9001 &
 
 4.检查磁盘空间  
 df -h  
+-------------------------------------------------------------------------------
+#### 故障案例
+es集群出现Unassigned shards问题  
+1.对集群进行巡检，进行检查集群状态，检查jvm使用情况，检查集群空间，磁盘空间
+2.查看/data1/containers/XXX/es/logs 目录下的日志  
+3.查看Unassigned shards有哪些
+`curl -XGET localhost:9200/_cat/shards?h=index,shard,prirep,state,unassigned.reason| grep UNASSIGNED`
+4.查看出现Unassigned shards原因
+`curl -XGET localhost:9200/_cluseter/allocation/explain?pretty`  
+5.查看状态不为green的index
+`curl -XGET localhost:9200/_cat/indices?v|grep -v green`  
+出现问题情况
+1.node节点卡死，通过kill es进程重启卡死es节点即可
+2.shards 分配超过最大次数，尝试手动分配shard  
+`curl -XPOST 'localhost:9203/_cluster/reroute?retry_failed=true'`
+3.副数据损坏，需要把相应副本数先设为0，再设为1，重新分配  
+```
+curl -XPUT localhost:9200/${index}/_settings?pretty -H 'Content-Type:application/json' -d'{
+"index":{
+"number_of_replicas":0
+}
+}'
+```
+4.对于数据可丢弃的情况，可以直接delete出现的问题indices，恢复集群正常（慎用）  
+`curl -X DELETE localhost:9200/index_name`  
