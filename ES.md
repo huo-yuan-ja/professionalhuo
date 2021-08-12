@@ -38,7 +38,26 @@ config文件为配置文件目录
 curl localhost:5100/search/clusters|python -m json.tool  
 集群健康状态  
 curl -XGET http://localhost:9200/_cluster/health?pretty  
-green yello red  
+status:green yello red 
+initializing_shards: 0 （待分配的分片）
+unassigned_shards: 0（未分配的分片）
+active_shards_percent_as_number:100% 
 集群node整体信息  
 curl -XGET localhost:9200/_cat/nodes?v  
+heap.percent:内存（关注内存是否爆表）
+集群node详细信息  
+curl -XGET localhost:9200/_nodes/process?pretty  
+查看分片索引细节  
+curl http://localhost:9200/_cat/indices?v
+查看分片状态  
+curl -XGET http://localhost:9200/_cat/shards?v
+查看unassigned shards（多少分片未分配）
+curl -XGET localhost:9200/_cat/shards?h=index,shard,prirep,state,unassigned.reason| grep UNASSIGNED
+查看哪些分片出现问题
+查看allocation issue
+curl -XGET  localhost:9200/_cluster/allocation/expain?pretty  
+查看snapshots  
+curl localhost:9200/_cat/snapshots/{repository}  
+查看备份 
+es首次备份全量备份，之后是增量备份  
 
