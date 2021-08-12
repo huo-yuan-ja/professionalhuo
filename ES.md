@@ -35,39 +35,65 @@ es
 config文件为配置文件目录  
 ### 常用命令
 查看集群整体信息  
-curl localhost:5100/search/clusters|python -m json.tool  
+`curl localhost:5100/search/clusters|python -m json.tool`  
 集群健康状态  
-curl -XGET http://localhost:9200/_cluster/health?pretty  
+`curl -XGET http://localhost:9200/_cluster/health?pretty`  
+
 status:green yello red 
 initializing_shards: 0 （待分配的分片）  
 unassigned_shards: 0（未分配的分片）  
 active_shards_percent_as_number:100%   
 集群node整体信息   
-curl -XGET localhost:9200/_cat/nodes?v   
+`curl -XGET localhost:9200/_cat/nodes?v`   
+
 heap.percent:内存（关注内存是否爆表）  
 集群node详细信息    
-curl -XGET localhost:9200/_nodes/process?pretty    
+`curl -XGET localhost:9200/_nodes/process?pretty`    
+
 查看分片索引细节    
-curl http://localhost:9200/_cat/indices?v  
+`curl http://localhost:9200/_cat/indices?v`  
+
 查看分片状态  
-curl -XGET http://localhost:9200/_cat/shards?v  
+`curl -XGET http://localhost:9200/_cat/shards?v`  
+
 查看unassigned shards（多少分片未分配）  
-curl -XGET localhost:9200/_cat/shards?h=index,shard,prirep,state,unassigned.reason| grep UNASSIGNED  
+`curl -XGET localhost:9200/_cat/shards?h=index,shard,prirep,state,unassigned.reason| grep UNASSIGNED`
+
 查看哪些分片出现问题  
 查看allocation issue  
-curl -XGET  localhost:9200/_cluster/allocation/expain?pretty    
+`curl -XGET  localhost:9200/_cluster/allocation/expain?pretty`   
+
 查看snapshots    
-curl localhost:9200/_cat/snapshots/{repository}   
+`curl localhost:9200/_cat/snapshots/{repository}`   
+
 查看备份  
 es首次备份全量备份，之后是增量备份   
 es 集群重启  
-通过接口来重起    
+通过接口来重起
+```
 curl -XPOST localhost:5100/cluster/update -d '{
 "cluster_name":"XXXXX",
 "operator":"XXXXX",
 "restart_type":"XXXX"
 }'  
+```
 重启策略  
 rolling_restart 滚动重启（建议）  
 full_cluster_restart 全量重启  
 no_restart 不重启  
+2.通过kill进程，自动拉起集群重启
+## 配置项的修改
+### 修改配置文件
+修改三个节点的elasticsearch.yml,kill掉es进程（重启es集群），需要注意的是所有es节点都要重启。  
+### 修改集群配置
+```
+curl -X PUT localhost:9200 /_cluster/settings -d
+{
+  "persistent": {
+    "discovery.zen.minimum_master_nodes":2 #临时生效
+  },
+  "transient": {
+     "discovery.zen.minimum_master_nodes":2 #永久生效
+  }
+}
+```
