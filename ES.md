@@ -24,4 +24,18 @@ es是一个分布式可扩展的实时搜索和分析引擎，一个建立在全
 第五层 ——Elasticsearch 的传输模块和 JMX 。 传输模块支持 Thrift, Memcached 、 HTTP,默认使用 HTTP 传输 。 JMX 是 Java 的管理框架，用来管理 Elasticsearch 应用 。
 
 第六层 —— Elasticsearch的API支持模式：通过阻STful API 和 Elasticsearch 集群进行交互
-
+### 部署架构
+master  
+端口：5100
+agent
+端口：5400
+es
+端口1:9200 http协议（用于外部通讯）
+端口2:9300 tcp协议（集群内部通讯）
+config文件为配置文件目录
+### 常用命令
+查看集群整体信息
+curl localhost:5100/search/clusters|python -m json.tool
+集群健康状态
+curl -XGET http://localhost:9200/_cluster/health?pretty
+green yello red
