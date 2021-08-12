@@ -12,7 +12,7 @@ es是一个分布式可扩展的实时搜索和分析引擎，一个建立在全
 增加高可用性：当主分片故障时，可以从副本分片中选择一个作为主分片
 提高性能：当查询的时候增加。副本需部署在不同的节点上，不能部署在和主分片相同的节点上，可以到主分片或副本分片中进行查询。副本分片可以在后续动态配置。
 ## es模块架构
-![es模块架构](https://github.com/huo-yuan-ja/jin_picture/blob/main/es.png)
+![es模块架构](https://github.com/huo-yuan-ja/jin_picture/blob/main/es.png)  
 第一层 —— Gateway：即Elasticsearch支持的索引数据的存储格式，当Elasticsearch关闭再启动的时候，它就会从这个gateway里面读取索引数据；支持的格式有：本地的Local FileSystem、分布式的Shared FileSystem、Hadoop的文件系统HDFS等。 
 
 第二层 —— Lucene框架： Elasticsearch 的底层 API 是 由 Lucene 提供的，每一个 Elasticsearch 节点上都有一个 Lucene 引擎的支持 。 
