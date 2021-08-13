@@ -157,7 +157,7 @@ curl -XPUT localhost:9200/${index}/_settings?pretty -H 'Content-Type:application
 报错日志如下
 *******************Data too large********** 
 解决方案：  
-在每个es集群node节点上进行下面操作
+在每个es集群node节点上进行下面操作  
 vim /data1/containeres/XXX/es/config/elasticsearch.yml  
 添加 network.breaker.inflight_request.limit:100%
 
