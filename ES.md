@@ -153,3 +153,12 @@ curl -XPUT localhost:9200/${index}/_settings?pretty -H 'Content-Type:application
 ```
 4.对于数据可丢弃的情况，可以直接delete出现的问题indices，恢复集群正常（慎用）  
 `curl -X DELETE localhost:9200/index_name`  
+###### 实例查询熔断问题
+报错日志如下
+*******************Data too large********** 
+解决方案：  
+在每个es集群node节点上进行下面操作
+vim /data1/containeres/XXX/es/config/elasticsearch.yml  
+添加 network.breaker.inflight_request.limit:100%
+
+在每个节点上kill es进程，重启集群，agent会将es进程重新拉起
