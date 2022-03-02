@@ -54,7 +54,7 @@
 
 - 容器技术持续火爆
 
-  ![](images/deplpment.png)
+  ![](images\deplpment.png)
 
 - Kubernetes(k8s)成为容器编排管理的标准
 
